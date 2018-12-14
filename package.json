@@ -1,0 +1,33 @@
+{
+  "name": "caweb-custom-modules",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "divi-scripts": "1.0.1",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
+  },
+  "scripts": {
+    "start": "divi-scripts start",
+    "build": "divi-scripts build",
+    "zip": "divi-scripts build && divi-scripts zip",
+    "eject": "divi-scripts eject"
+  },
+  "browserslist": {
+    "development": [
+      "last 2 chrome versions",
+      "last 2 firefox versions",
+      "last 2 edge versions"
+    ],
+    "production": [
+      ">1%",
+      "last 4 versions",
+      "Firefox ESR",
+      "not ie < 11"
+    ]
+  },
+  "cde": {
+    "gettext": "cacm-caweb-custom-modules",
+    "prefix": "cacm"
+  }
+}
