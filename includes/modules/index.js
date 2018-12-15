@@ -1,3 +1,3 @@
-import HelloWorld from './HelloWorld/HelloWorld';
+import Card from './Card/Card';
 
-export default [HelloWorld];
+export default [Card];
