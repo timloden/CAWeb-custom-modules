@@ -61,6 +61,18 @@ class CACM_Profile_Banner extends ET_Builder_Module {
                 'tab_slug' => 'general',
                 'toggle_slug'           => 'body',
             ),
+            'round_image' => array(
+                'label'              => esc_html__('Round Image', 'et_builder'),
+                'type'               => 'yes_no_button',
+                'option_category'    => 'configuration',
+                'options'        => array(
+                    'off' => esc_html__('No', 'et_builder'),
+                    'on'  => esc_html__('Yes', 'et_builder'),
+                ),
+                'description' => esc_html__('Switch to yes if you want round images in the profile banner.'),
+                'tab_slug'          => 'general',
+                'toggle_slug'           => 'body',
+            ),
             'portrait_alt' => array(
                 'label'           => esc_html__('Portrait Image Alt Text', 'et_builder'),
                 'type'            => 'text',
@@ -97,7 +109,7 @@ class CACM_Profile_Banner extends ET_Builder_Module {
             </div>', $portrait_url, $portrait_alt)
         );
 
-        $output = sprintf('<div id="profile-banner-wrapper" %1$s><a href="%2$s"><div class="profile-banner%3$s">%4$s<div class="banner-subtitle">%5$s</div><div class="banner-title">%6$s</div><div class="banner-link"><p>%7$s</p></div></div></a></div>', $class, $url, 'on' !== $round ? '' : ' round-image', $image, $job_title, $name, $profile_link);
+        $output = sprintf('<div id="profile-banner-wrapper" %1$s><div class="profile-banner%3$s">%4$s<div class="banner-subtitle">%5$s</div><div class="banner-title">%6$s</div><div class="banner-link"><a href="%2$s">%7$s</a></div></div></div>', $class, $url, 'on' !== $round ? '' : ' round-image', $image, $job_title, $name, $profile_link);
 
         return $output;
 	}

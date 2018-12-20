@@ -11,9 +11,17 @@ class ProfileBanner extends Component {
 
 	renderImage() {
 		if (this.props.portrait_url) {
-			return (
-				<img src={this.props.portrait_url} alt={this.props.portrait_alt} style={{width: 90, minWidth: 90, float: 'right'}} />
-			);
+
+			if (this.props.round_image) {
+				return (
+					<div class="profile-banner-img-wrapper"><img src={this.props.portrait_url} alt={this.props.portrait_alt} style={{width: 90, minWidth: 90, float: 'right'}} /></div>
+				);
+
+			} else {
+				return (
+					<img src={this.props.portrait_url} alt={this.props.portrait_alt} style={{width: 90, minWidth: 90, float: 'right'}} />
+				);
+			}
 		}
 	}
 
@@ -29,7 +37,7 @@ class ProfileBanner extends Component {
 	render() {
 	    return (
 			<Fragment>
-				<div class="profile-banner">
+				<div className={"profile-banner " + (this.props.round_image ? 'round-image' : '')}>
 			    	{this.renderImage()}
 			        <div class="banner-subtitle">{this.props.job_title}</div>
 			        <div class="banner-title">{this.props.name}</div>
