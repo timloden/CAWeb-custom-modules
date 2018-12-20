@@ -111,10 +111,6 @@ class CACM_Content_Slider_Slide extends ET_Builder_Module {
     function maybe_inherit_values() {
         global $slider_style;
         $this->props['slider_style'] = $slider_style;
-
-        echo('<pre>');
-        print_r($this->props);
-        echo('</pre>');
     }
 
 
