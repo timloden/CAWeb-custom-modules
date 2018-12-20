@@ -36,17 +36,11 @@ class CACM_Content_Slider extends ET_Builder_Module {
 
     public function before_render() {
         global $slider_style;
-
-        $slider_style = array(
-            'slider_style'  => $this->props['slider_style'],
-        );
+         $slider_style = $this->props['slider_style'];
     }
 
 	public function render( $unprocessed_props, $content = null, $render_slug ) {
         $content = $this->content;
-        
-        global $slider_style;
-        
         $output = sprintf(
             '<div class="carousel owl-carousel carousel-content">
                 %1$s
