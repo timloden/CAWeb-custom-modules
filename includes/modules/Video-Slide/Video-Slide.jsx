@@ -70,6 +70,7 @@ class ContentSlide extends Component {
 	}
 
 	render() {
+		console.log(this.props);
 	    return (
 	    	<Fragment>
 				{this.renderSlide()}
