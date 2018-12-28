@@ -1,0 +1,9 @@
+.et-fb-all-modules .cacm_content_slider:before {
+    content: '\61' !important;
+}
+ 
+.et-fb-all-modules .cacm_content_slider {
+    background-color: #3949ab;
+    color: white;
+    overflow: visible;
+}

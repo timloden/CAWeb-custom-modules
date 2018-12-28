@@ -4,10 +4,13 @@
   "private": true,
   "dependencies": {
     "divi-scripts": "1.0.1",
+    "plotly.js": "^1.43.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
+    "react-load-script": "0.0.6",
     "react-owl-carousel": "^2.3.1",
-    "react-owl-carousel2": "^0.3.0"
+    "react-owl-carousel2": "^0.3.0",
+    "react-plotly.js": "^2.2.0"
   },
   "scripts": {
     "start": "divi-scripts start",
