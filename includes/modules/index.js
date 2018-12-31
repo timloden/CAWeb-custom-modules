@@ -7,6 +7,8 @@ import MediaSlider from './Media-Slider/Media-Slider';
 import MediaSlide from './Media-Slide/Media-Slide';
 import ServiceTile from './Service-Tile/Service-Tile';
 import ServiceTiles from './Service-Tiles/Service-Tiles';
+import Gallery from './Gallery/Gallery';
+import GalleryImage from './Gallery-Image/Gallery-Image';
 
 
 export default [
@@ -18,6 +20,8 @@ export default [
 	MediaSlider, 
 	MediaSlide,
 	ServiceTile,
-	ServiceTiles
+	ServiceTiles,
+	Gallery,
+	GalleryImage
 	
 ];
