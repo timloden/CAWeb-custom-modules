@@ -9,40 +9,54 @@ class ProfileBanner extends Component {
 
 	static slug = 'cacm_profile_banner';
 
+	renderLink() {
+		if (this.props.profile_link) {
+			return (
+				<div className="banner-link"><a href={this.props.url}>{this.props.profile_link}</a></div>
+			);
+		}
+	}
+
 	renderImage() {
 		if (this.props.portrait_url) {
-
-			if (this.props.round_image) {
-				return (
-					<div class="profile-banner-img-wrapper"><img src={this.props.portrait_url} alt={this.props.portrait_alt} style={{width: 90, minWidth: 90, float: 'right'}} /></div>
+			return(
+				<div className="inner" style={{backgroundImage: "url(" + this.props.portrait_url + ")", backgroundRepeat: 'no-repeat', backgroundPosition: 'right bottom' }}>
+				 	<div className="banner-subtitle">{this.props.job_title}</div>
+				    <div className="banner-title">{this.props.name}</div>
+				    {this.renderLink()}
+				</div>
+			);
+			
+		} else {
+			if (this.props.gender === 'male') {
+				return(
+					<div className="inner" style={{backgroundImage: "url(/wp-content/themes/CAWeb-Standard/images/banner/banner-guy.png)", backgroundRepeat: 'no-repeat', backgroundPosition: 'right bottom' }}>
+						<div className="banner-subtitle">{this.props.job_title}</div>
+					    <div className="banner-title">{this.props.name}</div>
+					    {this.renderLink()}
+					</div>
 				);
-
 			} else {
-				return (
-					<img src={this.props.portrait_url} alt={this.props.portrait_alt} style={{width: 90, minWidth: 90, float: 'right'}} />
+				return(
+					<div className="inner" style={{backgroundImage: "url(/wp-content/themes/CAWeb-Standard/images/banner/banner-gal.png)", backgroundRepeat: 'no-repeat', backgroundPosition: 'right bottom' }}>
+						<div className="banner-subtitle">{this.props.job_title}</div>
+					    <div className="banner-title">{this.props.name}</div>
+					    {this.renderLink()}
+					</div>
 				);
 			}
 		}
 	}
 
 	
-	renderLink() {
-		if (this.props.profile_link) {
-			return (
-				<div class="banner-link"><a href={this.props.url}>{this.props.profile_link}</a></div>
-			);
-		}
-	}
+	
 
 	render() {
 	    return (
 			<Fragment>
-				<div className={"profile-banner " + (this.props.round_image ? 'round-image' : '')}>
-			    	{this.renderImage()}
-			        <div class="banner-subtitle">{this.props.job_title}</div>
-			        <div class="banner-title">{this.props.name}</div>
-			        {this.renderLink()}
-			    </div>
+			    <div className="profile-banner">
+				    {this.renderImage()}
+				</div>
 	      	</Fragment>
 	    );
 	}

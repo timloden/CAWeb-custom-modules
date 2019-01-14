@@ -7,12 +7,21 @@ class CACM_Panel extends ET_Builder_Module {
 
 	protected $module_credits = array(
 		'module_uri' => 'https://caweb.cdt.ca.gov/',
-		'author'     => 'Tim Loden',
+		'author'     => 'CAWeb Publishing',
 		'author_uri' => '',
 	);
 
 	public function init() {
 		$this->name = esc_html__( 'Panel', 'cacm-caweb-custom-modules' );
+        $this->settings_modal_toggles = array(
+            'general' => array(
+                'toggles' => array(
+                    'style'  => esc_html__('Style', 'cacm-caweb-custom-modules'),
+                    'header' => esc_html__('Header', 'cacm-caweb-custom-modules'),
+                    'body'   => esc_html__('Body', 'cacm-caweb-custom-modules'),
+                ),
+            ),
+        );
 	}
 
 	public function get_fields() {
@@ -68,7 +77,7 @@ class CACM_Panel extends ET_Builder_Module {
                 ),
                 'affects' => array('button_text', 'button_link'),
                 'tab_slug' => 'general',
-                'toggle_slug' => 'body',
+                'toggle_slug' => 'style',
             ),
             'button_text' => array(
                 'label'           => esc_html__('Button Text', 'cacm-caweb-custom-modules'),
@@ -77,7 +86,7 @@ class CACM_Panel extends ET_Builder_Module {
                 'description'     => esc_html__('Enter text for the button.', 'cacm-caweb-custom-modules'),
                 'show_if' => array('show_button' => 'on'),
                 'tab_slug' => 'general',
-                'toggle_slug'		=> 'body',
+                'toggle_slug'		=> 'style',
             ),
             'button_link' => array(
                 'label'           => esc_html__('Card URL', 'cacm-caweb-custom-modules'),
@@ -86,7 +95,7 @@ class CACM_Panel extends ET_Builder_Module {
                 'description'     => esc_html__('Here you can enter the URL for the location.', 'cacm-caweb-custom-modules'),
                 'show_if' => array('show_button' => 'on'),
                 'tab_slug' => 'general',
-                'toggle_slug'		=> 'body',
+                'toggle_slug'		=> 'style',
             ),
 		);
 	}

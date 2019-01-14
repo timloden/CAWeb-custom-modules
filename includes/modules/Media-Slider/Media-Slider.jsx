@@ -10,9 +10,9 @@ class MediaSlider extends Component {
 	static slug = 'cacm_media_slider';
 
 	renderButton() {
-		if (this.props.panel_show_button) {
+		if (this.props.panel_show_button === 'on') {
 			return (
-				  <div class="options"><a href={this.props.panel_button_link} class="btn btn-default">{this.props.panel_button_text}</a></div>
+				  <div className="options"><a href={this.props.panel_button_link} className="btn btn-default">{this.props.panel_button_text}</a></div>
 			);
 		}
 	}
@@ -20,13 +20,13 @@ class MediaSlider extends Component {
 	renderTriangle() {
 		if (this.props.panel_style === 'standout highlight') {
 			return (
-				<span class="triangle"></span>
+				<span className="triangle"></span>
 			);
 		}
 	}
 
 	renderSlider() {
-		if (this.props.show_panel) {
+		if (this.props.show_panel === 'on') {
 			return (
 				<div className={"panel panel-" + (this.props.panel_style)}>
 					<div className={"panel-heading"}>
@@ -36,7 +36,7 @@ class MediaSlider extends Component {
 					</div>
 					<div className={"panel-body"}>
 						<OwlCarousel 
-							className="carousel carousel-media"
+							className="carousel owl-carousel carousel-media"
 							nav={true}
 							dots={false}
 							margin={10}

@@ -15,7 +15,7 @@ class MediaSlide extends Component {
 	                <div className={"preview-image"}>
 	                    <img src={this.props.image} alt={this.props.content()} />
 	                </div>
-	                <div class="details">
+	                <div className="details">
 	                    {this.props.content()}
 	                </div>
             	</div>

@@ -107,7 +107,7 @@ class CACM_Media_Slider extends ET_Builder_Module {
         $output = sprintf(
             '
             %2$s
-            <div class="carousel carousel-media">
+            <div class="carousel owl-carousel carousel-media">
                 %1$s
             </div>
             %3$s

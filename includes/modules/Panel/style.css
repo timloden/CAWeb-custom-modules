@@ -1,23 +1,4 @@
-.et-fb-all-modules .cacm_card:before
-{
-    font-family: 'CaGov' !important;
-	content: '\e90b' !important;
-}
-
-.et-fb-all-modules .cacm_card {
-    background-color: #3949ab;
-    color: white;
-    overflow: visible;
-}
-
-.et-fb-all-modules .cacm_card:after {
-    content: "";
-    background-size: 40px 40px;
-    background-image: url('/wp-content/themes/CAWeb/images/system/logo.svg');
-    background-repeat: no-repeat;
-    position: absolute;
-    top: -10px;
-    left: -15px;
-    width: 40px;
-    height: 40px;
+.et-db #et-boc .et-fb-modules-list ul>li.cacm_panel:before {
+    font-family: 'CaGov'!important;
+    content: "\e658"!important;
 }

@@ -7,7 +7,7 @@ class CACM_Content_Slider extends ET_Builder_Module {
 
 	protected $module_credits = array(
 		'module_uri' => 'https://caweb.cdt.ca.gov/',
-		'author'     => 'Tim Loden',
+		'author'     => 'CAWeb Publishing',
 		'author_uri' => '',
 	);
 
@@ -15,6 +15,15 @@ class CACM_Content_Slider extends ET_Builder_Module {
 		$this->name = esc_html__( 'Content Slider', 'cacm-caweb-custom-modules' );
         $this->child_slug      = 'cacm_content_slider_slide';
         $this->child_item_text = esc_html__('Slide', 'cacm-caweb-custom-modules');
+        $this->settings_modal_toggles = array(
+            'general' => array(
+                'toggles' => array(
+                    'style'  => esc_html__('Style', 'cacm-caweb-custom-modules'),
+                    'header' => esc_html__('Header', 'cacm-caweb-custom-modules'),
+                    'body'   => esc_html__('Body', 'cacm-caweb-custom-modules'),
+                ),
+            ),
+        );
 	}
 
 	public function get_fields() {
@@ -36,7 +45,7 @@ class CACM_Content_Slider extends ET_Builder_Module {
 
     public function before_render() {
         global $slider_style;
-         $slider_style = $this->props['slider_style'];
+        $slider_style = $this->props['slider_style'];
     }
 
 	public function render( $unprocessed_props, $content = null, $render_slug ) {

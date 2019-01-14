@@ -7,12 +7,22 @@ class CACM_Card extends ET_Builder_Module {
 
 	protected $module_credits = array(
 		'module_uri' => 'https://caweb.cdt.ca.gov/',
-		'author'     => 'Tim Loden',
+		'author'     => 'CAWeb Publishing',
 		'author_uri' => '',
 	);
 
 	public function init() {
 		$this->name = esc_html__( 'Card', 'cacm-caweb-custom-modules' );
+        $this->settings_modal_toggles = array(
+            'general' => array(
+                'toggles' => array(
+                    'style'  => esc_html__('Style', 'cacm-caweb-custom-modules'),
+                    'header' => esc_html__('Header', 'cacm-caweb-custom-modules'),
+                    'body'   => esc_html__('Body', 'cacm-caweb-custom-modules'),
+                    'footer'   => esc_html__('Footer', 'cacm-caweb-custom-modules'),
+                ),
+            ),
+        );
 	}
 
 	public function get_fields() {
@@ -26,7 +36,9 @@ class CACM_Card extends ET_Builder_Module {
                     'standout'  => esc_html__('Standout', 'cacm-caweb-custom-modules'),
                     'overstated'  => esc_html__('Overstated', 'cacm-caweb-custom-modules'),
                     'understated'  => esc_html__('Understated', 'cacm-caweb-custom-modules'),
-                    'custom' => esc_html__('Custom', 'cacm-caweb-custom-modules'),
+                    'primary' => esc_html__('Primary', 'cacm-caweb-custom-modules'),
+                    'danger' => esc_html__('Danger', 'cacm-caweb-custom-modules'),
+                    'inverted' => esc_html__('Inverted', 'cacm-caweb-custom-modules'),
                 ),
                 'tab_slug' => 'general',
                 'toggle_slug'		=> 'style',

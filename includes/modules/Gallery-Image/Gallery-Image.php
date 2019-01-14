@@ -17,6 +17,13 @@ class CACM_Gallery_Image extends ET_Builder_Module {
         $this->type = 'child';
         $this->child_title_var = 'image_title';
         $this->child_title_fallback_var = 'image_title';
+         $this->settings_modal_toggles = array(
+            'general' => array(
+                'toggles' => array(
+                    'image'  => esc_html__('Image', 'cacm-caweb-custom-modules'),
+                ),
+            ),
+        );
     }
 
     public function get_fields() {
@@ -27,7 +34,7 @@ class CACM_Gallery_Image extends ET_Builder_Module {
                 'option_category' => 'basic_option',
                 'description' => esc_html__('Define the title for the Image', 'et_builder'),
                 'tab_slug'  => 'general',
-                'toggle_slug'   => 'body',
+                'toggle_slug'   => 'image',
             ),
             
             'image' => array(
@@ -39,7 +46,7 @@ class CACM_Gallery_Image extends ET_Builder_Module {
                 'update_text'        => esc_attr__('Set As Image', 'cacm-caweb-custom-modules'),
                 'description'        => esc_html__('Upload your desired image, or type in the URL to the image you would like to display.', 'cacm-caweb-custom-modules'),
                 'tab_slug' => 'general',
-                'toggle_slug'           => 'body',
+                'toggle_slug'        => 'image',
             ),
 
         );

@@ -1,9 +1,9 @@
-.et-fb-all-modules .cacm_content_slider:before {
-    content: '\61' !important;
+.et-db #et-boc .et-fb-modules-list ul>li.cacm_gallery:before {
+    font-family: 'CaGov'!important;
+    content: "\e658"!important;
 }
- 
-.et-fb-all-modules .cacm_content_slider {
-    background-color: #3949ab;
-    color: white;
-    overflow: visible;
-}
+
+.et-fb-post-content .cacm_gallery .gallery .cacm_gallery_image {
+    display: inline-block;
+    float: left;
+} 

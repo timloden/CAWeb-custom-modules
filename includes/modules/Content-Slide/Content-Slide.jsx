@@ -19,13 +19,13 @@ class ContentSlide extends Component {
 	renderContent() {
 		if (this.props.content) {
 			return (
-				 <p>{this.props.content()}</p>
+				 <div>{this.props.content()}</div>
 			);
 		}
 	}
 
 	renderButton() {
-		if (this.props.show_button) {
+		if (this.props.show_button === 'on') {
 			return (
 				  <a href={this.props.button_link}><button className={"btn btn-primary"}>{this.props.button_text}</button></a>
 			);

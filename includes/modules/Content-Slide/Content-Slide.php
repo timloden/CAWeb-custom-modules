@@ -7,7 +7,7 @@ class CACM_Content_Slider_Slide extends ET_Builder_Module {
 
     protected $module_credits = array(
         'module_uri' => 'https://caweb.cdt.ca.gov/',
-        'author'     => 'Tim Loden',
+        'author'     => 'CAWeb Publishing',
         'author_uri' => '',
     );
 
@@ -17,6 +17,14 @@ class CACM_Content_Slider_Slide extends ET_Builder_Module {
         $this->type = 'child';
         $this->child_title_var = 'title';
         $this->child_title_fallback_var = 'title';
+
+        $this->settings_modal_toggles = array(
+            'general' => array(
+                'toggles' => array(
+                    'slide-content'   => esc_html__('Slide Content', 'cacm-caweb-custom-modules'),
+                ),
+            ),
+        );
     }
 
     public function get_fields() {
@@ -27,7 +35,7 @@ class CACM_Content_Slider_Slide extends ET_Builder_Module {
                 'option_category' => 'basic_option',
                 'description'     => esc_html__('Input the name of the profile.', 'cacm-caweb-custom-modules'),
                 'tab_slug' => 'general',
-                'toggle_slug'           => 'body',
+                'toggle_slug'           => 'slide-content',
             ),
 
             'background' => array(
@@ -39,7 +47,7 @@ class CACM_Content_Slider_Slide extends ET_Builder_Module {
                 'update_text'        => esc_attr__('Set As Image', 'cacm-caweb-custom-modules'),
                 'description'        => esc_html__('Upload your desired image, or type in the URL to the image you would like to display.', 'cacm-caweb-custom-modules'),
                 'tab_slug' => 'general',
-                'toggle_slug'           => 'body',
+                'toggle_slug'           => 'slide-content',
             ),
 
             'content'     => array(
@@ -47,7 +55,7 @@ class CACM_Content_Slider_Slide extends ET_Builder_Module {
                 'type'            => 'tiny_mce',
                 'option_category' => 'basic_option',
                 'description'     => esc_html__( 'Content entered here will appear below the heading text.', 'cacm-caweb-custom-modules' ),
-                'toggle_slug'     => 'body',
+                'toggle_slug'     => 'slide-content',
             ),
 
             'show_button' => array(
@@ -60,7 +68,7 @@ class CACM_Content_Slider_Slide extends ET_Builder_Module {
                 ),
                 'affects' => array('button_text', 'button_link'),
                 'tab_slug' => 'general',
-                'toggle_slug' => 'body',
+                'toggle_slug' => 'slide-content',
             ),
 
             'button_text' => array(
@@ -70,7 +78,7 @@ class CACM_Content_Slider_Slide extends ET_Builder_Module {
                 'description'     => esc_html__('Enter text for the button.', 'cacm-caweb-custom-modules'),
                 'show_if' => array('show_button' => 'on'),
                 'tab_slug' => 'general',
-                'toggle_slug'       => 'body',
+                'toggle_slug'       => 'slide-content',
             ),
 
             'button_link' => array(
@@ -80,7 +88,7 @@ class CACM_Content_Slider_Slide extends ET_Builder_Module {
                 'description'     => esc_html__('Here you can enter the URL for the location.', 'cacm-caweb-custom-modules'),
                 'show_if' => array('show_button' => 'on'),
                 'tab_slug' => 'general',
-                'toggle_slug'       => 'body',
+                'toggle_slug'       => 'slide-content',
             ),
 
             'use_backdrop' => array(
@@ -94,7 +102,7 @@ class CACM_Content_Slider_Slide extends ET_Builder_Module {
                 ),
                 'affects' => array('button_text', 'button_link'),
                 'tab_slug' => 'general',
-                'toggle_slug' => 'body',
+                'toggle_slug' => 'slide-content',
             ),
 
             'slider_style' => array(

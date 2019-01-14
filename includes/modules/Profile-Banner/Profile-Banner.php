@@ -13,6 +13,14 @@ class CACM_Profile_Banner extends ET_Builder_Module {
 
 	public function init() {
 		$this->name = esc_html__( 'Profile Banner', 'cacm-caweb-custom-modules' );
+        $this->settings_modal_toggles = array(
+            'general' => array(
+                'toggles' => array(
+                    'profile' => esc_html__('Profile', 'cacm-caweb-custom-modules'),
+
+                ),
+            ),
+        );
 	}
 
 	public function get_fields() {
@@ -23,7 +31,7 @@ class CACM_Profile_Banner extends ET_Builder_Module {
                 'option_category' => 'basic_option',
                 'description'     => esc_html__('Input the name of the profile.', 'et_builder'),
                 'tab_slug' => 'general',
-                'toggle_slug'           => 'header',
+                'toggle_slug'           => 'profile',
             ),
             'job_title' => array(
                 'label'           => esc_html__('Job Title', 'et_builder'),
@@ -31,7 +39,7 @@ class CACM_Profile_Banner extends ET_Builder_Module {
                 'option_category' => 'basic_option',
                 'description'     => esc_html__('Input the job title.', 'et_builder'),
                 'tab_slug' => 'general',
-                'toggle_slug'           => 'header',
+                'toggle_slug'           => 'profile',
             ),
             'profile_link' => array(
                 'label'           => esc_html__('Profile Link', 'et_builder'),
@@ -39,7 +47,7 @@ class CACM_Profile_Banner extends ET_Builder_Module {
                 'option_category' => 'basic_option',
                 'description'     => esc_html__('Input the text for the profile link.', 'et_builder'),
                 'tab_slug' => 'general',
-                'toggle_slug'           => 'body',
+                'toggle_slug'           => 'profile',
             ),
             'url' => array(
                 'label'           => esc_html__('Profile URL', 'et_builder'),
@@ -48,7 +56,19 @@ class CACM_Profile_Banner extends ET_Builder_Module {
                 'default' => '#',
                 'description'     => esc_html__('Input the website of the profile.', 'et_builder'),
                 'tab_slug' => 'general',
-                'toggle_slug'           => 'body',
+                'toggle_slug'           => 'profile',
+            ),
+            'gender' => array(
+                'label'             => esc_html__('Gender', 'cacm-caweb-custom-modules'),
+                'type'              => 'select',
+                'option_category'   => 'configuration',
+                'options'           => array(
+                    'male' => esc_html__('Male', 'cacm-caweb-custom-modules'),
+                    'female'  => esc_html__('Female', 'cacm-caweb-custom-modules'),
+                ),
+                'default' => 'male',
+                'tab_slug' => 'general',
+                'toggle_slug'       => 'profile',
             ),
             'portrait_url' => array(
                 'label'              => esc_html__('Portrait Image URL', 'et_builder'),
@@ -59,19 +79,7 @@ class CACM_Profile_Banner extends ET_Builder_Module {
                 'update_text'        => esc_attr__('Set As Image', 'et_builder'),
                 'description'        => esc_html__('Upload your desired image, or type in the URL to the image you would like to display.', 'et_builder'),
                 'tab_slug' => 'general',
-                'toggle_slug'           => 'body',
-            ),
-            'round_image' => array(
-                'label'              => esc_html__('Round Image', 'et_builder'),
-                'type'               => 'yes_no_button',
-                'option_category'    => 'configuration',
-                'options'        => array(
-                    'off' => esc_html__('No', 'et_builder'),
-                    'on'  => esc_html__('Yes', 'et_builder'),
-                ),
-                'description' => esc_html__('Switch to yes if you want round images in the profile banner.'),
-                'tab_slug'          => 'general',
-                'toggle_slug'           => 'body',
+                'toggle_slug'           => 'profile',
             ),
             'portrait_alt' => array(
                 'label'           => esc_html__('Portrait Image Alt Text', 'et_builder'),
@@ -79,37 +87,37 @@ class CACM_Profile_Banner extends ET_Builder_Module {
                 'option_category' => 'basic_option',
                 'description'     => esc_html__('Input the alt text for the portrait image.', 'et_builder'),
                 'tab_slug' => 'general',
-                'toggle_slug'           => 'body',
+                'toggle_slug'           => 'profile',
             ),
 		);
 	}
 
 	public function render( $unprocessed_props, $content = null, $render_slug ) {
 		$name                 = $this->props['name'];
-        $job_title              = $this->props['job_title'];
-        $profile_link              = $this->props['profile_link'];
-        $portrait_url           = $this->props['portrait_url'];
-        $portrait_alt           = $this->props['portrait_alt'];
-        $round                = $this->props['round_image'];
-        $url                    = $this->props['url'];
+        $job_title            = $this->props['job_title'];
+        $profile_link         = $this->props['profile_link'];
+        $url                  = $this->props['url'];
+        $gender               = $this->props['gender'];
+        $portrait_url         = $this->props['portrait_url'];
+        $portrait_alt         = $this->props['portrait_alt'];
 
-        $class = sprintf(' class="%1$s" ', $this->module_classname($render_slug));
-
-        $url = ! empty($url) ? esc_url($url) : '';
-
-        if (empty($portrait_alt) && ! empty($portrait_url)) {
-            $portrait_id = attachment_url_to_postid($portrait_url);
-            $portrait_alt = get_post_meta($portrait_id, '_wp_attachment_image_alt', true);
+        if ($portrait_url) {
+            $image = $portrait_url;
+        } else {
+            if ($gender == 'male') {
+                $image = get_template_directory_uri() . '/images/banner/banner-guy.png';
+            } elseif ($gender == 'female') {
+                $image = get_template_directory_uri() . '/images/banner/banner-gal.png';
+            }
         }
 
-        $image = ('on' !== $round ?
-            sprintf('<img src="%1$s" style="width: 90px; min-height: 90px;float: right;" alt="%2$s"/>', $portrait_url, $portrait_alt) :
-            sprintf('<div class="profile-banner-img-wrapper">
-                <img src="%1$s" style="width: 90px; min-height: 90px;float: right;" alt="%2$s"/>
-            </div>', $portrait_url, $portrait_alt)
-        );
-
-        $output = sprintf('<div id="profile-banner-wrapper" %1$s><div class="profile-banner%3$s">%4$s<div class="banner-subtitle">%5$s</div><div class="banner-title">%6$s</div><div class="banner-link"><a href="%2$s">%7$s</a></div></div></div>', $class, $url, 'on' !== $round ? '' : ' round-image', $image, $job_title, $name, $profile_link);
+        $output = sprintf('<div class="profile-banner">
+                                <div class="inner" style="background:url(%5$s) no-repeat right bottom">
+                                    <div class="banner-subtitle">%2$s</div>
+                                    <div class="banner-title">%1$s</div>
+                                    <div class="banner-link"><a href="%4$s">%3$s</a></div>
+                                </div>
+                            </div>', $name, $job_title, $profile_link, $url, $image);
 
         return $output;
 	}

@@ -10,7 +10,7 @@ class Card extends Component {
 	static slug = 'cacm_card';
 
 	renderImage() {
-		if (this.props.show_image) {
+		if (this.props.show_image === 'on') {
 			return (
 				<img src={this.props.featured_image} alt="" />
 			);
@@ -18,17 +18,17 @@ class Card extends Component {
 	}
 
 	renderHeader() {
-		if (this.props.include_header) {
+		if (this.props.include_header === 'on') {
 			return (
-				  <div class="card-header">{this.props.header_text}</div>
+				  <div className="card-header">{this.props.header_text}</div>
 			);
 		}
 	}
 
 	renderButton() {
-		if (this.props.button) {
+		if (this.props.show_button === 'on') {
 			return (
-				  <a href={this.props.button_link} class="btn btn-default">{this.props.button_text}</a>
+				  <a href={this.props.button_link} className="btn btn-default">{this.props.button_text}</a>
 			);
 		}
 	}
@@ -36,7 +36,7 @@ class Card extends Component {
 	renderFooter() {
 		if (this.props.include_footer) {
 			return (
-				  <div class="card-footer">{this.props.footer_text}</div>
+				  <div className="card-footer">{this.props.footer_text}</div>
 			);
 		}
 	}
@@ -44,12 +44,12 @@ class Card extends Component {
 	render() {
 	    return (
 			<Fragment>
-	        	<div class="card card-default">
+	        	<div className={`card card-${this.props.card_layout}`}>
 	        		{ this.renderImage() }
 				    { this.renderHeader() }
-				    <div class="card-block">				    	
-				        <h4 class="card-title">{this.props.card_title}</h4>
-				        <p>{this.props.content()}</p>
+				    <div className="card-block">				    	
+				        <h4 className="card-title">{this.props.card_title}</h4>
+				        {this.props.content()}
 				        { this.renderButton() }
 				    </div>
 				     { this.renderFooter() }

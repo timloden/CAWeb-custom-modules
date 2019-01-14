@@ -10,29 +10,25 @@ class Panel extends Component {
 	static slug = 'cacm_panel';
 
 	renderIcon() {
-		if (this.props.show_icon) {
+		if (this.props.show_icon === 'on') {
 			return (
-				<span class="ca-gov-icon-info"></span>
-			);
-		} else {
-			return (
-				''
-			);
-		}
-	}
-
-	renderHeader() {
-		if (this.props.include_header) {
-			return (
-				  <div class="card-header">{this.props.header_text}</div>
+				<span className="ca-gov-icon-info"></span>
 			);
 		}
 	}
 
 	renderButton() {
-		if (this.props.show_button) {
+		if (this.props.show_button === 'on') {
 			return (
-				  <div class="options"><a href={this.props.button_link} class="btn btn-default">{this.props.button_text}</a></div>
+				  <div className="options"><a href={this.props.button_link} class="btn btn-default">{this.props.button_text}</a></div>
+			);
+		}
+	}
+
+	renderTriangle() {
+		if (this.props.panel_layout === 'standout highlight') {
+			return (
+				<span className="triangle"></span>
 			);
 		}
 	}
@@ -40,13 +36,14 @@ class Panel extends Component {
 	render() {
 	    return (
 			<Fragment>
-	        	<div class={`panel panel-${this.props.panel_layout}`}>
-	        		<div class="panel-heading">
+	        	<div className={`panel panel-${this.props.panel_layout}`}>
+	        		<div className="panel-heading">
+	        			{ this.renderTriangle() }
 	        			<h3>{ this.renderIcon() } {this.props.header_text}</h3>
 	        			{ this.renderButton() }
 				    </div>
-				    <div class="panel-body">				    	
-				        <p>{this.props.content()}</p>
+				    <div className="panel-body">				    	
+				        {this.props.content()}
 				    </div>
 				</div>
 	      	</Fragment>
