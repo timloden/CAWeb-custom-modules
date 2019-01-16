@@ -53,6 +53,43 @@ class CACM_Panel extends ET_Builder_Module {
                 'tab_slug' => 'general',
                 'toggle_slug'		=> 'style',
             ),
+            'show_image' => array(
+                'label'           => esc_html__('Include Image', 'cacm-caweb-custom-modules'),
+                'type'            => 'yes_no_button',
+                'option_category' => 'configuration',
+                'options'         => array(
+                    'off' => esc_html__('No', 'cacm-caweb-custom-modules'),
+                    'on'  => esc_html__('Yes', 'cacm-caweb-custom-modules'),
+                ),
+                'affects' => array('featured_image'),
+                'tab_slug' => 'general',
+                'toggle_slug'       => 'style',
+            ),
+            'featured_image' => array(
+                'label' => esc_html__('Image', 'cacm-caweb-custom-modules'),
+                'type' => 'upload',
+                'option_category' => 'basic_option',
+                'upload_button_text' => esc_attr__('Upload an image', 'cacm-caweb-custom-modules'),
+                'choose_text' => esc_attr__('Choose a Background Image', 'cacm-caweb-custom-modules'),
+                'update_text' => esc_attr__('Set As Background', 'cacm-caweb-custom-modules'),
+                'description' => esc_html__('If defined, this image will be used as the background for this location. To remove a background image, simply delete the URL from the settings field.', 'cacm-caweb-custom-modules'),
+                'show_if' => array('show_image' => 'on'),
+                'tab_slug' => 'general',
+                'toggle_slug'       => 'style',
+            ),
+            'image_layout' => array(
+                'label'             => esc_html__('Align Image', 'cacm-caweb-custom-modules'),
+                'type'              => 'select',
+                'option_category'   => 'configuration',
+                'options'           => array(
+                    'left' => esc_html__('Left', 'cacm-caweb-custom-modules'),
+                    'right'  => esc_html__('Right', 'cacm-caweb-custom-modules'),
+                ),
+                'default' => 'left',
+                'show_if' => array('show_image' => 'on'),
+                'tab_slug' => 'general',
+                'toggle_slug'       => 'style',
+            ),
             'header_text'     => array(
 				'label'           => esc_html__( 'Header Title', 'cacm-caweb-custom-modules' ),
 				'type'            => 'text',
@@ -89,7 +126,7 @@ class CACM_Panel extends ET_Builder_Module {
                 'toggle_slug'		=> 'style',
             ),
             'button_link' => array(
-                'label'           => esc_html__('Card URL', 'cacm-caweb-custom-modules'),
+                'label'           => esc_html__('Button URL', 'cacm-caweb-custom-modules'),
                 'type'            => 'text',
                 'option_category' => 'basic_option',
                 'description'     => esc_html__('Here you can enter the URL for the location.', 'cacm-caweb-custom-modules'),
@@ -108,14 +145,29 @@ class CACM_Panel extends ET_Builder_Module {
 		$show_button = $this->props['show_button'];
         $button_text = $this->props['button_text'];
         $button_link = $this->props['button_link'];
+        $show_image = $this->props['show_image'];
+        $image = $this->props['featured_image'];
+        $image_layout = $this->props['image_layout'];
+
+
 
 		$class = sprintf('panel-%1$s', $panel_layout);
+
+        $triangle = ($class == 'panel-standout hightlight' ? '<span className="triangle"></span>' : '');
 
 		$display_icon = ("on" == $show_icon ? sprintf('<span class="ca-gov-icon-info"></span>') : '');
 
         $show_button = ("on" == $show_button ? sprintf('<div class="options"><a href="%2$s" class="btn btn-default">%1$s</a></div>', $button_text, $button_link) : '');
 
-		$output = sprintf('<div class="panel %1$s"><div class="panel-heading"><h3>%2$s %3$s</h3>%4$s</div><div class="panel-body">%5$s</div></div>', $class, $display_icon, $header_text, $show_button, $content );
+        $photo = ("on" == $show_image ? sprintf('<div class="photo" style="background-image: url(%1$s);"></div>', $image) : '');
+
+        $photo_align =  ("on" == $show_image ? sprintf('photo-%1$s', $image_layout) : '');
+
+
+		$output = sprintf('<div class="panel %1$s %7$s">
+                <div class="panel-heading">%8$s<h3>%2$s %3$s</h3>%4$s</div>
+                <div class="panel-body">%5$s %6$s</div>
+                </div>', $class, $display_icon, $header_text, $show_button, $content, $photo, $photo_align, $triangle );
 
         return $output;
 	}

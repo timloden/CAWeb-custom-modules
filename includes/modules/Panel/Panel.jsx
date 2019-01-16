@@ -33,17 +33,26 @@ class Panel extends Component {
 		}
 	}
 
+	renderImage() {
+		if (this.props.show_image === 'on') {
+			return (
+				  <div class="photo" style={{backgroundImage: "url(" + this.props.featured_image + ")"}}></div>
+			);
+		}
+	}
+
 	render() {
 	    return (
 			<Fragment>
-	        	<div className={`panel panel-${this.props.panel_layout}`}>
+	        	<div className={"panel panel-" + (this.props.panel_layout) + " photo-" + (this.props.show_image === 'on' ? this.props.image_layout : '')}>
 	        		<div className="panel-heading">
 	        			{ this.renderTriangle() }
 	        			<h3>{ this.renderIcon() } {this.props.header_text}</h3>
 	        			{ this.renderButton() }
 				    </div>
 				    <div className="panel-body">				    	
-				        {this.props.content()}
+				        { this.props.content() }
+				        { this.renderImage() }
 				    </div>
 				</div>
 	      	</Fragment>

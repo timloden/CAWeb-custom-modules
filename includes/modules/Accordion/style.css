@@ -1,0 +1,9 @@
+.et-db #et-boc .et-fb-modules-list ul>li.cacm_gallery:before {
+    font-family: 'CaGov'!important;
+    content: "\e658"!important;
+}
+
+.et-fb-post-content .cacm_gallery .gallery .cacm_gallery_image {
+    display: inline-block;
+    float: left;
+} 

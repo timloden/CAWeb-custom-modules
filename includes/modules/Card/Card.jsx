@@ -12,7 +12,7 @@ class Card extends Component {
 	renderImage() {
 		if (this.props.show_image === 'on') {
 			return (
-				<img src={this.props.featured_image} alt="" />
+				<img className="card-img-top img-responsive" src={this.props.featured_image} alt="" />
 			);
 		}
 	}
