@@ -7,7 +7,7 @@ import './style.css';
 
 class Card extends Component {
 
-	static slug = 'cacm_card';
+	static slug = 'et_pb_ca_card';
 
 	renderImage() {
 		if (this.props.show_image === 'on') {
@@ -20,7 +20,7 @@ class Card extends Component {
 	renderHeader() {
 		if (this.props.include_header === 'on') {
 			return (
-				  <div className="card-header">{this.props.header_text}</div>
+				  <div className="card-header">{this.props.title}</div>
 			);
 		}
 	}

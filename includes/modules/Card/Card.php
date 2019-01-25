@@ -1,8 +1,8 @@
 <?php
 
-class CACM_Card extends ET_Builder_Module {
+class CA_Card extends ET_Builder_Module {
 
-	public $slug       = 'cacm_card';
+	public $slug       = 'et_pb_ca_card';
 	public $vb_support = 'on';
 
 	protected $module_credits = array(
@@ -40,6 +40,7 @@ class CACM_Card extends ET_Builder_Module {
                     'danger' => esc_html__('Danger', 'cacm-caweb-custom-modules'),
                     'inverted' => esc_html__('Inverted', 'cacm-caweb-custom-modules'),
                 ),
+                'default' => 'default',
                 'tab_slug' => 'general',
                 'toggle_slug'		=> 'style',
             ),
@@ -79,7 +80,7 @@ class CACM_Card extends ET_Builder_Module {
                 'tab_slug' => 'general',
                 'toggle_slug'		=> 'header',
             ),
-            'header_text'     => array(
+            'title'     => array(
 				'label'           => esc_html__( 'Header Title', 'cacm-caweb-custom-modules' ),
 				'type'            => 'text',
 				'option_category' => 'basic_option',
@@ -159,7 +160,7 @@ class CACM_Card extends ET_Builder_Module {
 		$show_image = $this->props['show_image'];
         $featured_image = $this->props['featured_image'];
         $include_header = $this->props['include_header'];
-        $header_text = $this->props['header_text'];
+        $header_text = $this->props['title'];
 		$title = $this->props['card_title'];
 		$content = $this->content;
 		$show_button = $this->props['show_button'];
@@ -171,7 +172,7 @@ class CACM_Card extends ET_Builder_Module {
 
 		$class = sprintf('card-%1$s', $card_layout);
 
-		$display_image = ("on" == $show_image ? sprintf('<img class="card-img-top img-responsive" src="%1$s" alt="Card image cap">', $featured_image) : '');
+		$display_image = ("on" == $show_image ? sprintf('<img class="img-responsive" src="%1$s" alt="Card image cap">', $featured_image) : '');
 
 		$display_header = ("on" == $include_header ?
 					sprintf('<div class="card-header">%1$s</div>', $header_text) :
@@ -189,4 +190,4 @@ class CACM_Card extends ET_Builder_Module {
 	}
 }
 
-new CACM_Card;
+new CA_Card;
