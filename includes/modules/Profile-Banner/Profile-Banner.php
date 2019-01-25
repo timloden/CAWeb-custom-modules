@@ -1,13 +1,13 @@
 <?php
 
-class CACM_Profile_Banner extends ET_Builder_Module {
+class CA_Profile_Banner extends ET_Builder_Module {
 
-	public $slug       = 'cacm_profile_banner';
+	public $slug       = 'et_pb_profile_banner';
 	public $vb_support = 'on';
 
 	protected $module_credits = array(
 		'module_uri' => 'https://caweb.cdt.ca.gov/',
-		'author'     => 'Tim Loden',
+		'author'     => 'CAWeb Publishing',
 		'author_uri' => '',
 	);
 
@@ -123,4 +123,4 @@ class CACM_Profile_Banner extends ET_Builder_Module {
 	}
 }
 
-new CACM_Profile_Banner;
+new CA_Profile_Banner;

@@ -7,7 +7,7 @@ import './style.css';
 
 class ProfileBanner extends Component {
 
-	static slug = 'cacm_profile_banner';
+	static slug = 'et_pb_profile_banner';
 
 	renderLink() {
 		if (this.props.profile_link) {
