@@ -7,7 +7,7 @@ import './style.css';
 
 class Panel extends Component {
 
-	static slug = 'cacm_panel';
+	static slug = 'et_pb_ca_panel';
 
 	renderIcon() {
 		if (this.props.show_icon === 'on') {
@@ -47,7 +47,7 @@ class Panel extends Component {
 	        	<div className={"panel panel-" + (this.props.panel_layout) + " photo-" + (this.props.show_image === 'on' ? this.props.image_layout : '')}>
 	        		<div className="panel-heading">
 	        			{ this.renderTriangle() }
-	        			<h3>{ this.renderIcon() } {this.props.header_text}</h3>
+	        			<h3>{ this.renderIcon() } {this.props.title}</h3>
 	        			{ this.renderButton() }
 				    </div>
 				    <div className="panel-body">				    	

@@ -1,8 +1,8 @@
 <?php
 
-class CACM_Panel extends ET_Builder_Module {
+class CA_Panel extends ET_Builder_Module {
 
-	public $slug       = 'cacm_panel';
+	public $slug       = 'et_pb_ca_panel';
 	public $vb_support = 'on';
 
 	protected $module_credits = array(
@@ -90,7 +90,7 @@ class CACM_Panel extends ET_Builder_Module {
                 'tab_slug' => 'general',
                 'toggle_slug'       => 'style',
             ),
-            'header_text'     => array(
+            'title'     => array(
 				'label'           => esc_html__( 'Header Title', 'cacm-caweb-custom-modules' ),
 				'type'            => 'text',
 				'option_category' => 'basic_option',
@@ -140,7 +140,7 @@ class CACM_Panel extends ET_Builder_Module {
 	public function render( $unprocessed_props, $content = null, $render_slug ) {
 		$panel_layout = $this->props['panel_layout'];
 		$show_icon = $this->props['show_icon'];
-        $header_text = $this->props['header_text'];
+        $header_text = $this->props['title'];
 		$content = $this->content;
 		$show_button = $this->props['show_button'];
         $button_text = $this->props['button_text'];
@@ -173,4 +173,4 @@ class CACM_Panel extends ET_Builder_Module {
 	}
 }
 
-new CACM_Panel;
+new CA_Panel;
