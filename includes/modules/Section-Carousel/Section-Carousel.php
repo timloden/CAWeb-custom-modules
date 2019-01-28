@@ -238,45 +238,7 @@ function init() {
         return $output;
     }
 
-    // This is a non-standard function. It outputs JS code to change items amount for carousel-media.
-    function carousel_fix() {
-        $carousels = ( ! is_404() && ! empty(get_post()) ? json_encode(caweb_get_shortcode_from_content(get_the_content(), $this->slug, true)) : array()); ?>
-            <script>
-        $ = jQuery.noConflict();
 
-       var media_carousels = <?php print_r($carousels); ?>;
-
-        media_carousels.forEach(function(element, index) {
-          $('.<?php print $this->slug; ?>_' + index + ' .carousel-media').owlCarousel({
-                responsive : true,
-                            responsive: {
-                          0: {
-                            items: 1,
-                            nav: true
-                          },
-                          400: {
-                            items: 1,
-                            nav: true
-                          },
-                          768: {
-                            items: undefined == element.slide_amount ? 4 : element.slide_amount,
-                            nav: true
-                          },
-                        },
-                margin : 10,
-                nav : true,
-                dots : false,
-          navText: [
-          '<span class="ca-gov-icon-arrow-prev" aria-hidden="true"></span>',
-          '<span class="ca-gov-icon-arrow-next" aria-hidden="true"></span>'
-        ],
-        })
-        });
-
-
-            </script>
-            <?php
-    }
 }
 new CA_Section_Carousel_Legacy;
 
@@ -667,45 +629,7 @@ class CA_Section_Fullwidth_Carousel_Legacy extends ET_Builder_Module {
         return $output;
     }
 
-    // This is a non-standard function. It outputs JS code to change items amount for carousel-media.
-    function carousel_fix() {
-        $carousels = ( ! is_404() && ! empty(get_post()) ? json_encode(caweb_get_shortcode_from_content(get_the_content(), $this->slug, true)) : array()); ?>
-            <script>
-        $ = jQuery.noConflict();
 
-       var media_carousels = <?php print_r($carousels); ?>;
-
-        media_carousels.forEach(function(element, index) {
-          $('.<?php print $this->slug; ?>_' + index + ' .carousel-media').owlCarousel({
-                responsive : true,
-            responsive: {
-              0: {
-                items: 1,
-                    nav: true
-              },
-              400: {
-                items: 1,
-                    nav: true
-              },
-              768: {
-                items: undefined == element.slide_amount ? 4 : element.slide_amount,
-                nav: true
-              },
-            },
-                margin : 10,
-                nav : true,
-                dots : false,
-          navText: [
-          '<span class="ca-gov-icon-arrow-prev" aria-hidden="true"></span>',
-          '<span class="ca-gov-icon-arrow-next" aria-hidden="true"></span>'
-        ],
-        })
-        });
-
-
-            </script>
-            <?php
-    }
 }
 new CA_Section_Fullwidth_Carousel_Legacy;
 
