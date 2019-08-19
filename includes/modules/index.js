@@ -15,6 +15,7 @@ import Accordion from './Accordion/Accordion';
 import AccordionItem from './Accordion-Item/Accordion-Item';
 import AccordionList from './Accordion-List/Accordion-List';
 import AccordionListItem from './Accordion-List-Item/Accordion-List-Item';
+import PublicationList from './Publication-List/Publication-List';
 
 export default [
 	Card, 
@@ -33,5 +34,6 @@ export default [
 	Accordion,
 	AccordionItem,
 	AccordionList,
-	AccordionListItem
+	AccordionListItem,
+	PublicationList
 ];
