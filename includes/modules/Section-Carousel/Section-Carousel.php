@@ -1,16 +1,18 @@
 <?php
 
-class CA_Section_Carousel_Legacy extends ET_Builder_Module {
+class CA_Section_Carousel_Legacy extends ET_Builder_Module
+{
 
-	public $vb_support = 'off';
+    public $vb_support = 'off';
 
-	protected $module_credits = array(
-		'module_uri' => 'https://caweb.cdt.ca.gov/',
-		'author'     => 'CAWeb Publishing',
-		'author_uri' => '',
-	);
+    protected $module_credits = array(
+    'module_uri' => 'https://caweb.cdt.ca.gov/',
+    'author'     => 'CAWeb Publishing',
+    'author_uri' => '',
+    );
 
-function init() {
+    function init()
+    {
         $this->name = esc_html__('Section - Carousel (Legacy)', 'et_builder');
         $this->slug = 'et_pb_ca_section_carousel';
 
@@ -45,7 +47,8 @@ function init() {
         add_action('wp_footer', array($this, 'carousel_fix'), 20);
     }
 
-    function get_fields() {
+    function get_fields()
+    {
         $general_fields = array(
             'carousel_style' => array(
                 'label'           => esc_html__('Style', 'et_builder'),
@@ -195,13 +198,15 @@ function init() {
         return array_merge($general_fields, $design_fields, $advanced_fields);
     }
 
-    function before_render() {
+    function before_render()
+    {
         global $et_pb_ca_section_carousel_style;
 
         $et_pb_ca_section_carousel_style = $this->props['carousel_style'];
     }
 
-    function render($unprocessed_props, $content = null, $render_slug) {
+    function render($unprocessed_props, $content = null, $render_slug)
+    {
         $carousel_style             = $this->props['carousel_style'];
         $slide_amount               = $this->props['slide_amount'];
         $in_panel               = $this->props['in_panel'];
@@ -238,12 +243,58 @@ function init() {
         return $output;
     }
 
+    function carousel_fix()
+    {
+        $carousels = ( ! is_404() && ! empty(get_post()) && isset($this->props['carousel_style']) && "media" == $this->props['carousel_style'] ? json_encode(caweb_get_shortcode_from_content(get_the_content(), $this->slug, true)) : array());
+
+        if (! empty($carousels)) :
+            ?>
+            <script>
+        $ = jQuery.noConflict();
+
+       var media_carousels = <?php print_r($carousels); ?>;
+
+        media_carousels.forEach(function(element, index) {
+          $('.<?php print $this->slug; ?>_' + index + ' .carousel-media').owlCarousel({
+                  responsive : true,
+                            responsive: {
+                          0: {
+                            items: 1,
+                            nav: true
+                          },
+                          400: {
+                            items: 1,
+                            nav: true
+                          },
+                          768: {
+                            items: undefined == element.slide_amount ? 4 : element.slide_amount,
+                            nav: true
+                          },
+                        },
+                  margin : 10,
+                  nav : true,
+                  dots : false,
+          navText: [
+          '<span class="ca-gov-icon-arrow-prev" aria-hidden="true"></span>',
+          '<span class="ca-gov-icon-arrow-next" aria-hidden="true"></span>'
+        ],
+        })
+        });
+
+
+            </script>
+            <?php
+        endif;
+    }
+
 
 }
 new CA_Section_Carousel_Legacy;
 
-class CA_Section_Carousel_Slide_Legacy extends ET_Builder_Module {
-    function init() {
+class CA_Section_Carousel_Slide_Legacy extends ET_Builder_Module
+{
+    function init()
+    {
         $this->name = esc_html__('Carousel Slide', 'et_builder');
         $this->slug = 'et_pb_ca_section_carousel_slide';
 
@@ -278,7 +329,8 @@ class CA_Section_Carousel_Slide_Legacy extends ET_Builder_Module {
             ),
         );
     }
-    function get_fields() {
+    function get_fields()
+    {
         $general_fields = array(
             'slide_title' => array(
                 'label' => esc_html__('Title', 'et_builder'),
@@ -353,7 +405,8 @@ class CA_Section_Carousel_Slide_Legacy extends ET_Builder_Module {
 
         return array_merge($general_fields, $design_fields, $advanced_fields);
     }
-    function render($unprocessed_props, $content = null, $render_slug) {
+    function render($unprocessed_props, $content = null, $render_slug)
+    {
         $slide_image = $this->props['slide_image'];
         $slide_title = $this->props['slide_title'];
         $slide_desc = $this->props['slide_desc'];
@@ -401,8 +454,10 @@ class CA_Section_Carousel_Slide_Legacy extends ET_Builder_Module {
 new CA_Section_Carousel_Slide_Legacy;
 
 // Fullwidth Version
-class CA_Section_Fullwidth_Carousel_Legacy extends ET_Builder_Module {
-    function init() {
+class CA_Section_Fullwidth_Carousel_Legacy extends ET_Builder_Module
+{
+    function init()
+    {
         $this->name = esc_html__('Section - Carousel (Legacy)', 'et_builder');
         $this->slug = 'et_pb_ca_fullwidth_section_carousel';
         $this->fullwidth = true;
@@ -437,7 +492,8 @@ class CA_Section_Fullwidth_Carousel_Legacy extends ET_Builder_Module {
         // Custom handler: Output JS for editor preview in page footer.
         add_action('wp_footer', array($this, 'carousel_fix'), 20);
     }
-    function get_fields() {
+    function get_fields()
+    {
         $general_fields = array(
             'carousel_style' => array(
                 'label'           => esc_html__('Style', 'et_builder'),
@@ -586,13 +642,15 @@ class CA_Section_Fullwidth_Carousel_Legacy extends ET_Builder_Module {
         return array_merge($general_fields, $design_fields, $advanced_fields);
     }
 
-    function before_render() {
+    function before_render()
+    {
         global $et_pb_ca_fullwidth_section_carousel_style;
 
         $et_pb_ca_fullwidth_section_carousel_style = $this->props['carousel_style'];
     }
 
-    function render($unprocessed_props, $content = null, $render_slug) {
+    function render($unprocessed_props, $content = null, $render_slug)
+    {
         $carousel_style             = $this->props['carousel_style'];
         $slide_amount               = $this->props['slide_amount'];
         $in_panel               = $this->props['in_panel'];
@@ -629,12 +687,58 @@ class CA_Section_Fullwidth_Carousel_Legacy extends ET_Builder_Module {
         return $output;
     }
 
+    function carousel_fix()
+    {
+        $carousels = ( ! is_404() && ! empty(get_post()) && isset($this->props['carousel_style']) && "media" == $this->props['carousel_style'] ? json_encode(caweb_get_shortcode_from_content(get_the_content(), $this->slug, true)) : array());
+
+        if (! empty($carousels)) :
+            ?>
+            <script>
+        $ = jQuery.noConflict();
+
+       var media_carousels = <?php print_r($carousels); ?>;
+
+        media_carousels.forEach(function(element, index) {
+          $('.<?php print $this->slug; ?>_' + index + ' .carousel-media').owlCarousel({
+                  responsive : true,
+                            responsive: {
+                          0: {
+                            items: 1,
+                            nav: true
+                          },
+                          400: {
+                            items: 1,
+                            nav: true
+                          },
+                          768: {
+                            items: undefined == element.slide_amount ? 4 : element.slide_amount,
+                            nav: true
+                          },
+                        },
+                  margin : 10,
+                  nav : true,
+                  dots : false,
+          navText: [
+          '<span class="ca-gov-icon-arrow-prev" aria-hidden="true"></span>',
+          '<span class="ca-gov-icon-arrow-next" aria-hidden="true"></span>'
+        ],
+        })
+        });
+
+
+            </script>
+            <?php
+        endif;
+    }
+
 
 }
 new CA_Section_Fullwidth_Carousel_Legacy;
 
-class CA_Section_Fullwidth_Carousel_Slide_Legacy extends ET_Builder_Module {
-    function init() {
+class CA_Section_Fullwidth_Carousel_Slide_Legacy extends ET_Builder_Module
+{
+    function init()
+    {
         $this->name = esc_html__('FullWidth Carousel Slide', 'et_builder');
         $this->slug = 'et_pb_ca_fullwidth_section_carousel_slide';
         $this->fullwidth = true;
@@ -670,7 +774,8 @@ class CA_Section_Fullwidth_Carousel_Slide_Legacy extends ET_Builder_Module {
             ),
         );
     }
-    function get_fields() {
+    function get_fields()
+    {
         $general_fields = array(
             'slide_title' => array(
                 'label' => esc_html__('Title', 'et_builder'),
@@ -745,7 +850,8 @@ class CA_Section_Fullwidth_Carousel_Slide_Legacy extends ET_Builder_Module {
 
         return array_merge($general_fields, $design_fields, $advanced_fields);
     }
-    function render($unprocessed_props, $content = null, $render_slug) {
+    function render($unprocessed_props, $content = null, $render_slug)
+    {
         $slide_image = $this->props['slide_image'];
         $slide_title = $this->props['slide_title'];
         $slide_desc = $this->props['slide_desc'];
