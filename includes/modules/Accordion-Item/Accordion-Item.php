@@ -61,7 +61,7 @@ class CACM_Accordion_Item extends ET_Builder_Module {
             <div class="panel panel-default" id="accordian">
                 <div class="panel-heading" role="tab" id="heading%3$s">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#%4$s" aria-expanded="true" aria-controls="%4$s">%1$s</a>
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#%4$s" aria-expanded="true" aria-controls="%4$s">%1$s<span aria-hidden="true"></span></a>
                     </h4>
                 </div>
                 <div id="%4$s" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading%3$s">
