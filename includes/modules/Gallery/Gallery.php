@@ -25,7 +25,6 @@ class CACM_Gallery extends ET_Builder_Module {
                 'type'              => 'select',
                 'option_category'   => 'basic_option',
                 'options'           => array(
-                    'default' => esc_html__('Default', 'cacm-caweb-custom-modules'),
                     'three-up'  => esc_html__('3', 'cacm-caweb-custom-modules'),
                     'four-up'  => esc_html__('4', 'cacm-caweb-custom-modules'),
                 ),
