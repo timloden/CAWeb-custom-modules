@@ -2,7 +2,7 @@
 
 class CA_Section_Footer_Legacy extends ET_Builder_Module {
 
-	public $slug       = 'et_pb_ca_post_list';
+	public $slug       = 'et_pb_ca_section_footer';
 	public $vb_support = 'off';
 
 	protected $module_credits = array(
@@ -338,7 +338,7 @@ class CA_Section_Footer_Group_Legacy extends ET_Builder_Module {
         for ($i = 1; $i <= 10; $i++) {
             $tmp[] = $icon;
             $group_links .= ("on" == $group_link_show[$i] ?
-        sprintf('<li><a href="%1$s"%2$s%3$s target="_blank">%4$s%5$s</a></li>',
+        sprintf('<li><a class="btn btn-default btn-xs" href="%1$s"%2$s%3$s target="_blank">%4$s%5$s</a></li>',
         esc_url($group_link_url[$i]), $link_as_button, $text_color, $icon, $group_link_text[$i]) : '');
         }
 
@@ -675,7 +675,7 @@ class CA_Fullwidth_Section_Footer_Group_Legacy extends ET_Builder_Module {
         for ($i = 1; $i <= 10; $i++) {
             $tmp[] = $icon;
             $group_links .= ("on" == $group_link_show[$i] ?
-            sprintf('<li><a href="%1$s"%2$s%3$s target="_blank">%4$s%5$s</a></li>',
+            sprintf('<li><a class="btn btn-default btn-xs" href="%1$s"%2$s%3$s target="_blank">%4$s%5$s</a></li>',
             esc_url($group_link_url[$i]), $link_as_button, $text_color, $icon, $group_link_text[$i]) : '');
         }
 

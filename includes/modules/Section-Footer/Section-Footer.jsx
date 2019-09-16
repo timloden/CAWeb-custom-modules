@@ -7,7 +7,7 @@ import './style.css';
 
 class SectionFooter extends Component {
 
-	static slug = 'et_pb_ca_post_list';
+	static slug = 'et_pb_ca_section_footer';
 
 	render() {
 	    return (
