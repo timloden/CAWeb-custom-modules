@@ -17,6 +17,14 @@ class CACM_Media_Slider_Slide extends ET_Builder_Module {
         $this->type = 'child';
         $this->child_title_var = 'title';
         $this->child_title_fallback_var = 'title';
+
+        $this->settings_modal_toggles = array(
+            'general' => array(
+                'toggles' => array(
+                    'slide-content'   => esc_html__('Slide Content', 'cacm-caweb-custom-modules'),
+                ),
+            ),
+        );
     }
 
     public function get_fields() {
@@ -27,7 +35,7 @@ class CACM_Media_Slider_Slide extends ET_Builder_Module {
                 'option_category' => 'basic_option',
                 'description'     => esc_html__('Input the name of the profile.', 'cacm-caweb-custom-modules'),
                 'tab_slug' => 'general',
-                'toggle_slug'           => 'body',
+                'toggle_slug'           => 'slide-content',
             ),
 
             'image' => array(
@@ -39,7 +47,7 @@ class CACM_Media_Slider_Slide extends ET_Builder_Module {
                 'update_text'        => esc_attr__('Set As Image', 'cacm-caweb-custom-modules'),
                 'description'        => esc_html__('Upload your desired image, or type in the URL to the image you would like to display.', 'cacm-caweb-custom-modules'),
                 'tab_slug' => 'general',
-                'toggle_slug'           => 'body',
+                'toggle_slug'           => 'slide-content',
             ),
 
             'content' => array(
@@ -47,7 +55,7 @@ class CACM_Media_Slider_Slide extends ET_Builder_Module {
                 'type'            => 'tiny_mce',
                 'option_category' => 'basic_option',
                 'description'     => esc_html__( 'Content entered here will appear below the image.', 'cacm-caweb-custom-modules' ),
-                'toggle_slug'     => 'body',
+                'toggle_slug'     => 'slide-content',
             ),
 
         );
@@ -61,7 +69,7 @@ class CACM_Media_Slider_Slide extends ET_Builder_Module {
         $output = sprintf(
             '<div class="item">
                 <div class="preview-image">
-                    <img src="%2$s" alt="%3$s">
+                    <img src="%2$s" alt="%1$s">
                 </div>
                 <div class="details">
                     %3$s

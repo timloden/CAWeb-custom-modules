@@ -13,7 +13,7 @@ class MediaSlide extends Component {
 	    	<Fragment>
 				<div className={"item"}>
 	                <div className={"preview-image"}>
-	                    <img src={this.props.image} alt={this.props.content()} />
+	                    <img src={this.props.image} alt={this.props.title} />
 	                </div>
 	                <div className="details">
 	                    {this.props.content()}
