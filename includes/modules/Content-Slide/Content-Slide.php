@@ -1,6 +1,7 @@
 <?php
 
-class CACM_Content_Slider_Slide extends ET_Builder_Module {
+class CACM_Content_Slider_Slide extends ET_Builder_Module
+{
     
     public $slug       = 'cacm_content_slider_slide';
     public $vb_support = 'on';
@@ -11,9 +12,10 @@ class CACM_Content_Slider_Slide extends ET_Builder_Module {
         'author_uri' => '',
     );
 
-    public function init() {
+    public function init()
+    {
         $this->slug = 'cacm_content_slider_slide';
-        $this->name = esc_html__( 'Slide', 'cacm-caweb-custom-modules' );
+        $this->name = esc_html__('Slide', 'cacm-caweb-custom-modules');
         $this->type = 'child';
         $this->child_title_var = 'title';
         $this->child_title_fallback_var = 'title';
@@ -27,7 +29,8 @@ class CACM_Content_Slider_Slide extends ET_Builder_Module {
         );
     }
 
-    public function get_fields() {
+    public function get_fields()
+    {
         return array(
             'title' => array(
                 'label'           => esc_html__('Title', 'cacm-caweb-custom-modules'),
@@ -51,10 +54,10 @@ class CACM_Content_Slider_Slide extends ET_Builder_Module {
             ),
 
             'content'     => array(
-                'label'           => esc_html__( 'Slide Content', 'cacm-caweb-custom-modules' ),
+                'label'           => esc_html__('Slide Content', 'cacm-caweb-custom-modules'),
                 'type'            => 'tiny_mce',
                 'option_category' => 'basic_option',
-                'description'     => esc_html__( 'Content entered here will appear below the heading text.', 'cacm-caweb-custom-modules' ),
+                'description'     => esc_html__('Content entered here will appear below the heading text.', 'cacm-caweb-custom-modules'),
                 'toggle_slug'     => 'slide-content',
             ),
 
@@ -116,13 +119,15 @@ class CACM_Content_Slider_Slide extends ET_Builder_Module {
         );
     }
 
-    function maybe_inherit_values() {
+    function maybe_inherit_values()
+    {
         global $slider_style;
         $this->props['slider_style'] = $slider_style;
     }
 
 
-    public function render( $unprocessed_props, $content = null, $render_slug ) {        
+    public function render( $unprocessed_props, $content = null, $render_slug )
+    {        
         $title  = $this->props['title'];
         $background = $this->props['background'];
         $content = $this->content;
@@ -133,7 +138,7 @@ class CACM_Content_Slider_Slide extends ET_Builder_Module {
 
         $slider_style = $this->props['slider_style'];
        
-        $show_button = ("on" == $show_button ? sprintf('<a href="%2$s"><button class="btn btn-primary">%1$s</button></a>', $button_text, $button_link) : '');
+        $show_button = ("on" == $show_button ? sprintf('<a class="btn btn-primary" href="%2$s">%1$s</a>', $button_text, $button_link) : '');
 
         $content_fit = ("content_fit" == $slider_style ? sprintf('style="background-image: url(%1$s);', $background) : '');
         $image_fit = ("image_fit" == $slider_style ? sprintf('<img src="%1$s" alt="background" />', $background) : '');
