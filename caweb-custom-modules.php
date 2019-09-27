@@ -3,7 +3,7 @@
 Plugin Name: CAWeb Custom Modules
 Plugin URI:  https://caweb.cdt.ca.gov/
 Description: Custom Divi modules to use with the CAWeb theme
-Version:     1.0.2
+Version:     1.0.3
 Author:      Tim Loden
 Author URI:  
 License:     GPL2
