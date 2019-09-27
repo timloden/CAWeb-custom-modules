@@ -232,12 +232,12 @@ class CA_Section_Carousel_Legacy extends ET_Builder_Module
 
             $display_title = sprintf('<div class="panel-heading"><h4>%1$s</h4>%2$s</div>', $panel_title, $display_button);
 
-            $output  = sprintf('<div%1$s%2$s>%3$s<div class="panel-body"%4$s><div class="owl-carousel carousel-media">%5$s</div></div></div>', $this->module_id(), $class, $display_title, $section_background_color, $content);
+            $output  = sprintf('<div%1$s%2$s>%3$s<div class="panel-body"%4$s><div class="owl-carousel carousel carousel-media">%5$s</div></div></div>', $this->module_id(), $class, $display_title, $section_background_color, $content);
         } else {
             $this->add_classname('section');
             $class = sprintf(' class="%1$s" ', $this->module_classname($render_slug));
 
-            $output = sprintf('<div%1$s%2$s%3$s><div class="owl-carousel carousel-%4$s">%5$s</div></div>', $this->module_id(), $class, $section_background_color, "media" == $carousel_style ? $carousel_style : 'content', $content);
+            $output = sprintf('<div%1$s%2$s%3$s><div class="owl-carousel carousel carousel-%4$s">%5$s</div></div>', $this->module_id(), $class, $section_background_color, "media" == $carousel_style ? $carousel_style : 'content', $content);
         }
 
         return $output;
@@ -676,12 +676,12 @@ class CA_Section_Fullwidth_Carousel_Legacy extends ET_Builder_Module
 
             $display_title = sprintf('<div class="panel-heading"><h4>%1$s</h4>%2$s</div>', $panel_title, $display_button);
 
-            $output  = sprintf('<div%1$s%2$s>%3$s<div class="panel-body"%4$s><div class="owl-carousel carousel-media">%5$s</div></div></div>', $this->module_id(), $class, $display_title, $section_background_color, $content);
+            $output  = sprintf('<div%1$s%2$s>%3$s<div class="panel-body"%4$s><div class="owl-carousel carousel carousel-media">%5$s</div></div></div>', $this->module_id(), $class, $display_title, $section_background_color, $content);
         } else {
             $this->add_classname('section');
             $class = sprintf(' class="%1$s" ', $this->module_classname($render_slug));
 
-            $output = sprintf('<div%1$s%2$s%3$s><div class="owl-carousel carousel-%4$s">%5$s</div></div>', $this->module_id(), $class, $section_background_color, "media" == $carousel_style ? $carousel_style : 'content', $content);
+            $output = sprintf('<div%1$s%2$s%3$s><div class="owl-carousel carousel carousel-%4$s">%5$s</div></div>', $this->module_id(), $class, $section_background_color, "media" == $carousel_style ? $carousel_style : 'content', $content);
         }
 
         return $output;
