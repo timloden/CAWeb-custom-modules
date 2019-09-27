@@ -1,6 +1,7 @@
 <?php
 
-class CACM_Gallery_Image extends ET_Builder_Module {
+class CACM_Gallery_Image extends ET_Builder_Module
+{
     
     public $slug       = 'cacm_gallery_image';
     public $vb_support = 'on';
@@ -11,13 +12,14 @@ class CACM_Gallery_Image extends ET_Builder_Module {
         'author_uri' => '',
     );
 
-    public function init() {
+    public function init()
+    {
         $this->slug = 'cacm_gallery_image';
-        $this->name = esc_html__( 'Image', 'cacm-caweb-custom-modules' );
+        $this->name = esc_html__('Image', 'cacm-caweb-custom-modules');
         $this->type = 'child';
         $this->child_title_var = 'image_title';
         $this->child_title_fallback_var = 'image_title';
-         $this->settings_modal_toggles = array(
+        $this->settings_modal_toggles = array(
             'general' => array(
                 'toggles' => array(
                     'image'  => esc_html__('Image', 'cacm-caweb-custom-modules'),
@@ -26,7 +28,14 @@ class CACM_Gallery_Image extends ET_Builder_Module {
         );
     }
 
-    public function get_fields() {
+    public function get_advanced_fields_config() {
+		return array(
+			'link_options'     => false,
+		);
+	}
+
+    public function get_fields()
+    {
         return array(
             'image_title' => array(
                 'label' => esc_html__('Image Title / Alt Text', 'cacm-caweb-custom-modules'),
@@ -49,10 +58,13 @@ class CACM_Gallery_Image extends ET_Builder_Module {
                 'toggle_slug'        => 'image',
             ),
 
+
+
         );
     }
 
-    public function render( $unprocessed_props, $content = null, $render_slug ) {        
+    public function render( $unprocessed_props, $content = null, $render_slug )
+    {        
         $image = $this->props['image'];
         $image_title = $this->props['image_title'];
 
@@ -66,11 +78,10 @@ class CACM_Gallery_Image extends ET_Builder_Module {
             ',
             $image,
             $image_title
-
         );
-
-
+    
         return $output;
+       
     }
 }
 

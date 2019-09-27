@@ -15,6 +15,12 @@ class CACM_Gallery extends ET_Builder_Module {
 		$this->name = esc_html__( 'Gallery', 'cacm-caweb-custom-modules' );
         $this->child_slug      = 'cacm_gallery_image';
         $this->child_item_text = esc_html__('Image', 'cacm-caweb-custom-modules');
+    }
+    
+    public function get_advanced_fields_config() {
+		return array(
+			'link_options'     => false,
+		);
 	}
 
 	public function get_fields() {
