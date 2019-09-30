@@ -71,7 +71,6 @@ class CACM_Gallery_Image extends ET_Builder_Module
         $output = sprintf(
             '<div class="item">
                 <a class="gallery-item" href="%1$s" data-gallery="gallery-1">
-                    <span class="sr-only">%2$s</span>
                     <img src="%1$s" alt="%2$s">
                 </a>
             </div>
